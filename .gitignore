@@ -1,0 +1,27 @@
+# Kill workspace files
+.idea
+digit.sublime-project
+digit.sublime-workspace
+
+# Kill User spcific data
+.DS_Store
+dump
+*.swp
+*.rdb
+*.log
+npm-debug.log*
+
+# Kill Dynamic files
+node_modules
+build
+public/*
+app/assets/index.json
+
+# Keep explicit assets
+!public/fonts
+!public/robots.txt
+!public/google*.html
+
+# Kill local info
+config/prodSSL
+local-scripts
