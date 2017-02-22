@@ -26,3 +26,5 @@ app/assets/index.json
 # Kill local info
 config/prodSSL
 local-scripts
+
+dist

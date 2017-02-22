@@ -1,6 +1,18 @@
+Alexa = require("alexa-sdk")
+
 module.exports = (event,context) ->
+  handlers = {
+    "GetWeight": () ->
+      @emit(":tell", "Get Weight")
+    "SetWeight": () ->
+      @emit(":ask", "What is your weight today?", "What is your weight?")
+    "Unhandled": () ->
+      console.log "** Unhandled event"
+      @emit(":tell", "Unhandled error occurred")
+  }
+
   console.log 'Received event:', JSON.stringify(event, null, 2)
-  console.log 'value1 =', event.key1
-  console.log 'value2 =', event.key2
-  console.log 'value3 =', event.key3
-  context.succeed(event.key1)
+  alexa = Alexa.handler(event, context)
+  alexa.dynamoDBTableName = "WeightySession"
+  alexa.registerHandlers handlers
+  alexa.execute()
